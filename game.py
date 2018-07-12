@@ -1,13 +1,17 @@
 import time
 import sys
 import random
+from helpers import Ship, Room, Item
 
 commands = ['look', 'open', 'close', 'take', 'use', 'combine', 'exit', 'quit']
 inventory = []
 error_responses = ['Does not compute', 'Error parsing command, please try again', 'Command not understood, please try again']
+intro_status = {'Drive System': 'Inactive', 'Life Support': 'Failing', 'Navigation': 'Offline', 'Security Status': 'Lockdown'}
+ship_rooms = ['Bridge', 'Crew Quarters', 'Medical Bay', 'Main Hallway', 'Engine Room', 'Engineering', 'Security', 'Lavatory', "Captain's Quarters", "Mess Hall"]
 
 def main():
     playing = True
+    atalanta = Ship(intro_status, ship_rooms)
     skip_intro = check_if_played()
     print()
     display_text("texts/intro.txt", skip_intro)
