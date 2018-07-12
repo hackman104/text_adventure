@@ -1,0 +1,26 @@
+The year is 2176. You are an employee of a corporation that specializes in space
+exploration. This company has been developing an experimental spacecraft with a drive 
+that allows it to travel at almost the speed of light - the Atalanta. 
+
+After extensive testing within the solar system, the Atalanta was sent on its first
+mission to an exoplanet: Proxima Centauri b, about 4.2 light-years from Earth.
+Due to the incredible force of acceleration and the length of the trip, the crew
+were placed in hypersleep pods specially designed to protect them from the dangers
+of light-speed travel.
+
+Instead of reaching its destination, however, the Atalanta's engines stopped firing
+and it fell into a slowly decaying orbit around Jupiter, on the other side of the 
+asteroid belt. It has not sent out a distress signal, and has not responded to any 
+attempts to contact it.
+
+You are an engineer, and you work on the most challenging tasks your company faces. 
+You were repairing a mining vessel in the asteroid belt when the ship stopped near 
+Jupiter, and based on your skill-set and proximity, your company tasked you with 
+traveling to the ship, investigating, and performing repairs as needed. Further 
+assistance is on the way, but will not arrive for over a month. Your journey took
+only a week.
+
+When you arrive on the scene, you are amazed at the size of the Atalanta. All of the
+systems necessary to support its drive array must require a lot of space. There may
+be a lot of work to do. Time to get started ...
+

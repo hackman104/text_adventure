@@ -1,0 +1,14 @@
+Your attempts to hail the Atalanta go unanswered. Upon examination, you see nothing
+obviously wrong with the ship (other than that its engines aren't firing), but find 
+that none of its hatches respond to your attempts to initiate a docking procedure.
+You worry that breaching the hull could endanger the crew, since you don't know
+whether or not they are still in hypersleep, and if not, where in the ship they are.
+
+You begin a scan for signals from the ship. Perhaps someone has activated a low-power
+distress signal, or you can use one of the wirelessly connected devices on the ship
+to gain access to its systems.
+
+Your scan turns up only one signal: a weak, open connection to a device labeled simply,
+"RaDMAR." It only seems to be accepting connections on port 22. You connect to it and
+receive the following readout:
+
