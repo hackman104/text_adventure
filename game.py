@@ -1,8 +1,13 @@
 import time
 import sys
-from pathlib import Path
+import random
+
+commands = ['look', 'open', 'close', 'take', 'use', 'combine', 'exit', 'quit']
+inventory = []
+error_responses = ['Does not compute', 'Error parsing command, please try again', 'Command not understood, please try again']
 
 def main():
+    playing = True
     skip_intro = check_if_played()
     print()
     display_text("texts/intro.txt", skip_intro)
@@ -10,6 +15,9 @@ def main():
     display_text("texts/start.txt")
     time.sleep(1)
     robot_intro()
+    time.sleep(1)
+    while playing:
+        playing = get_user_input()
 
 def check_if_played():
     """
@@ -75,6 +83,52 @@ def robot_intro():
     slow_print('Only basic commands will be understood. Type "help" for a list of commands.')
     print()
     print()
+
+def get_user_input():
+    """
+    Prompt the user for input, split it into its elements, and check to see if the command is valid.
+    If the user asks for help, provide a list of valid commands.
+    If the user enters an ostensibly valid command, pass it to the try_command function.
+    If the user input begins with an invalid command, return an error.
+    Returns True unless the user enters 'quit' or 'exit.'
+    """
+    status = True
+    user_input = input("Please enter your command: ")
+    user_input = user_input.lower()
+
+    args = user_input.split()
+
+    if args[0] == 'help':
+        print('My available commands are: ', end='')
+        for command in commands:
+            print(command + ' ', end='')
+        print()
+    elif args[0] in commands:
+        status = try_command(args)
+    else:
+        print(error_responses[random.randrange(len(error_responses))])
+
+    return status
+
+def try_command(command):
+    """
+    Parses the user command to see if the action is valid. For example, 'open cabinet' would be valid,
+    But 'open chair' would not be.
+    If the user enters 'exit' or 'quit,' prompts them to confirm. If so, returns False, otherwise, returns True.
+    """
+    status = True
+    if command[0] == 'exit' or command[0] == 'quit':
+        while True:
+            ans = input('Are you sure you want to exit the game? (y/n) ').lower()
+            if ans in ['y', 'yes', 'n', 'no']:
+                break
+            else:
+                print('Please provide a valid yes or no response.')
+        if ans == 'y' or ans == 'yes':
+            status = False
+    
+    return status
+        
 
 if __name__ == "__main__":
     main()
