@@ -54,7 +54,7 @@ def slow_print(text):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(0.02)
+        time.sleep(0.03)
 
 def display_text(file_name, skip=False):
     """
