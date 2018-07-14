@@ -26,14 +26,21 @@ class Ship(object):
         return self.status
 
 class Room(object):
-    def __init__(self, description, items):
+    def __init__(self, name, description, items):
         """
         description a string describing the room if the user enters 'look'
         items a list of items available for interaction in the room
         """
+        self.name = name
         self.description = description
         self.items = items
 
+    def get_name(self):
+        """
+        Returns the room's name
+        """
+        return self.name
+        
     def get_description(self):
         """
         Returns the room's description
@@ -65,11 +72,19 @@ class Room(object):
 class Item(object):
     def __init__(self, description, interactions):
         """
+        name is a string with the name of the item
         description is a detailed description of the object, to be used if the user looks at it.
         interactions is a list of valid commands for the object.
         """
+        self.name = name
         self.description = description
         self.interactions = interactions
+
+    def get_name(self):
+        """
+        returns the name of the item
+        """
+        return self.name
 
     def get_description(self):
         """
