@@ -1,3 +1,5 @@
+# Need to figure out how to track which rooms border others
+
 class Ship(object):
     def __init__(self, status, rooms):
         """
@@ -26,21 +28,24 @@ class Ship(object):
         return self.status
 
 class Room(object):
-    def __init__(self, name, description, items):
+    def __init__(self, name, description, items, borders):
         """
+        name is the name of the room
         description a string describing the room if the user enters 'look'
         items a list of items available for interaction in the room
+        borders is a list of rooms which border the current room
         """
         self.name = name
         self.description = description
         self.items = items
+        self.borders = borders
 
     def get_name(self):
         """
         Returns the room's name
         """
         return self.name
-        
+
     def get_description(self):
         """
         Returns the room's description
@@ -68,6 +73,15 @@ class Room(object):
 
     def __str__(self):
         return self.description
+    
+    def check_border(self, room):
+        """
+        returns True if the rooms border one another, False if otherwise
+        """
+        if room in self.borders:
+            return True
+        else:
+            return False
 
 class Item(object):
     def __init__(self, description, interactions):
@@ -105,4 +119,47 @@ class Item(object):
     def __str__(self):
         return self.description
 
+class Robot(object):
+    def __init__(self, position, inventory):
+        """
+        position is a room in the ship
+        inventory is a list of items
+        """
+        self.position = position
+        self.inventory = []
 
+    def get_inventory(self):
+        """
+        returns the robot's current inventory
+        """
+        return self.inventory
+
+    def add_item(self, item):
+        """
+        item is of class Item
+        adds item to robot's inventory
+        """
+        self.inventory.append(item)
+
+    def remove_item(self, item):
+        """
+        item is of class Item
+        removes an item from robot's inventory, for example if it has been used
+        """
+        if item in self.inventory:
+            self.inventory.remove(item)
+
+    def get_position(self):
+        """
+        returns the robot's current position
+        """
+        return self.position
+
+    def change_position(self, new_room):
+        """
+        moves robot to a new room
+        """
+        if self.position.check_border(new_room):
+            self.position = new_room
+        else:
+            print("You can't travel there from here.")

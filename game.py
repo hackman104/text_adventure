@@ -104,9 +104,8 @@ def get_user_input():
 
     if args[0] == 'help':
         print('My available commands are: ', end='')
-        for command in commands:
-            print(command + ' ', end='')
-        print()
+        comm_str = ", ".join(commands)
+        print(comm_str)
     elif args[0] in commands:
         status = try_command(args)
     else:
