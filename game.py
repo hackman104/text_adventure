@@ -12,6 +12,9 @@ ship_rooms = ['Bridge', 'Crew Quarters', 'Medical Bay', 'Main Hallway', 'Engine 
 
 def main():
 
+    # initialize color printing
+    init()
+
     # start session, initialize ship
     playing = True
     atalanta = Ship(intro_status, ship_rooms)
@@ -57,14 +60,21 @@ def check_if_played():
 
     return skip
 
-def slow_print(text):
+def slow_print(text, color_name=None):
     """
-    Takes one paramater - text - which should be a string. Prints the strong one character at a time.
+    Takes two paramaters - text, which should be a string; and color, which is an optional string parameter specifying the background color. Prints the strong one character at a time.
     """
+    if color_name:
+        color_name = color_name.upper()
+        color = getattr(Back, color_name)
+        print(color, end="")
+
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.03)
+
+    print(Style.RESET_ALL)
 
 def display_text(file_name, skip=False):
     """
@@ -83,11 +93,9 @@ def robot_intro():
     """
     Provides the introduction to the robot the player will be using to explore the ship
     """
-    # load colorama
-    init()
 
     # print backgrounded messages
-    print(Back.GREEN + 'Welcome to the service interface for the Rapid Deploymenet Mobile Assistance Robot')
+    slow_print("Welcome to the service interface for the Rapid Deploymenet Mobile Assistance Robot", "GREEN")
     print()
     time.sleep(0.5)
     print(Back.RED + 'WARNING' + Style.RESET_ALL, end="")
@@ -102,9 +110,6 @@ def robot_intro():
     print()
     slow_print('Only basic commands will be understood. Type "help" for a list of commands.')
 
-    # unload colorama
-    deinit()
-    print()
     print()
 
 def get_user_input():
