@@ -2,6 +2,7 @@ import time
 import sys
 import random
 from helpers import Ship, Room, Item
+from colorama import init
 
 commands = ['look', 'open', 'close', 'take', 'use', 'combine', 'exit', 'quit']
 inventory = []
