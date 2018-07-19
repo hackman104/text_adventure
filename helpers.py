@@ -22,7 +22,7 @@ class Ship(object):
         new_status: a string representing the updated status
         """
         if system in self.status.keys():
-            self.system[key] = new_status
+            self.status[system] = new_status
 
     def __str__(self):
         return self.status
@@ -84,7 +84,7 @@ class Room(object):
             return False
 
 class Item(object):
-    def __init__(self, description, interactions):
+    def __init__(self, name, description, interactions):
         """
         name is a string with the name of the item
         description is a detailed description of the object, to be used if the user looks at it.
