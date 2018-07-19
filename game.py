@@ -4,7 +4,7 @@ import random
 from helpers import Ship, Room, Item
 from colorama import init, Back, Style, deinit
 
-commands = ['look', 'open', 'close', 'take', 'use', 'combine', 'exit', 'quit']
+commands = ['look', 'open', 'close', 'take', 'use', 'combine', 'map', 'whereami', 'exit', 'quit']
 inventory = []
 error_responses = ['Does not compute', 'Error parsing command, please try again', 'Command not understood, please try again']
 intro_status = {'Drive System': 'Inactive', 'Life Support': 'Failing', 'Navigation': 'Offline', 'Security Status': 'Lockdown'}
