@@ -2,7 +2,7 @@ import time
 import sys
 import random
 from helpers import Ship, Room, Item
-from colorama import init
+from colorama import init, Back, Style, deinit
 
 commands = ['look', 'open', 'close', 'take', 'use', 'combine', 'exit', 'quit']
 inventory = []
@@ -11,16 +11,24 @@ intro_status = {'Drive System': 'Inactive', 'Life Support': 'Failing', 'Navigati
 ship_rooms = ['Bridge', 'Crew Quarters', 'Medical Bay', 'Main Hallway', 'Engine Room', 'Engineering', 'Security', 'Lavatory', "Captain's Quarters", "Mess Hall"]
 
 def main():
+
+    # start session, initialize ship
     playing = True
     atalanta = Ship(intro_status, ship_rooms)
+
+    # check if user has played before, see if they want to skip the intro
     skip_intro = check_if_played()
     print()
+
+    # play the intro (if user chose to) and start the game
     display_text("texts/intro.txt", skip_intro)
     time.sleep(1)
     display_text("texts/start.txt")
     time.sleep(1)
     robot_intro()
     time.sleep(1)
+
+    # play game until user exits
     while playing:
         playing = get_user_input()
 
@@ -31,6 +39,7 @@ def check_if_played():
     """
     skip = False
     
+    # check for existence of settings file resources/played.txt
     try:
         with open("resources/played.txt", "r") as check:
             while True:
@@ -74,11 +83,17 @@ def robot_intro():
     """
     Provides the introduction to the robot the player will be using to explore the ship
     """
-    print('\x1b[6;30;42m' + 'Welcome to the service interface for the Rapid Deploymenet Mobile Assistance Robot' + '\x1b[0m')
+    # load colorama
+    init()
+
+    # print backgrounded messages
+    print(Back.GREEN + 'Welcome to the service interface for the Rapid Deploymenet Mobile Assistance Robot')
     print()
     time.sleep(0.5)
-    print('\x1b[0;30;41m' + 'WARNING' + '\x1b[0m', end="")
+    print(Back.RED + 'WARNING' + Style.RESET_ALL, end="")
     time.sleep(0.5)
+
+    # return to printing normally
     slow_print(' Deployment incomplete. Functionality and command interface limited. Please contact Engineering Officer for assistance')
     print()
     print()
@@ -86,6 +101,9 @@ def robot_intro():
     time.sleep(1)
     print()
     slow_print('Only basic commands will be understood. Type "help" for a list of commands.')
+
+    # unload colorama
+    deinit()
     print()
     print()
 
@@ -123,7 +141,7 @@ def try_command(command):
     status = True
     if command[0] == 'exit' or command[0] == 'quit':
         while True:
-            ans = input('Are you sure you want to exit the game? (y/n) ').lower()
+            ans = input('Are you sure you want to end your session? (y/n) ').lower()
             if ans in ['y', 'yes', 'n', 'no']:
                 break
             else:
