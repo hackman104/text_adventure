@@ -2,13 +2,13 @@ import time
 import sys
 import random
 from helpers import Ship, Room, Item
+from support import room_connections
 from colorama import init, Back, Style, deinit
 
 commands = ['look', 'go', 'inventory (inv)', 'open', 'close', 'take', 'use', 'combine', 'whereami', 'exit', 'quit']
 inventory = []
 error_responses = ['Does not compute', 'Error parsing command, please try again', 'Command not understood, please try again']
 intro_status = {'Drive System': 'Inactive', 'Life Support': 'Failing', 'Navigation': 'Offline', 'Security Status': 'Lockdown'}
-ship_rooms = ['Bridge', 'Crew Quarters', 'Medical Bay', 'Main Hallway', 'Engine Room', 'Engineering', 'Security', 'Lavatory', "Captain's Quarters", "Mess Hall"]
 
 def main():
 
@@ -17,7 +17,7 @@ def main():
 
     # start session, initialize ship
     playing = True
-    atalanta = Ship(intro_status, ship_rooms)
+    atalanta = Ship(intro_status, list(room_connections.keys()))
 
     # check if user has played before, see if they want to skip the intro
     skip_intro = check_if_played()
