@@ -1,0 +1,21 @@
+room_connections = {
+    'Engineering':          ['Engine Room', 'Systems Hallway'],
+    'Engine Room':          ['Engineering', 'Systems Hallway', 'Life Support'],
+    'Life Support':         ['Engine Room', 'Systems Hallway'],
+    'Systems Hallway':      ['Engine Room', 'Engineering', 'Life Support', 'Ramp A'],
+    'Ramp A':               ['Systems Hallway', 'Main Hallway'],
+    'Main Hallway':         ['Lavatory', 'Crew Quarters', 'Hypersleep Pods', 'Mess Hall', 'Medical Bay', 'Docking Bay', 'Security'],
+    'Lavatory':             ['Main Hallway', 'Hypersleep Pods'],
+    'Hypersleep Pods':      ['Main Hallway', 'Lavatory', 'Crew Quarters'],
+    'Crew Quarters':        ['Hypersleep Pods', 'Main Hallway'],
+    'Mess Hall':            ['Main Hallway'],
+    'Medical Bay':          ['Main Hallway'],
+    'Docking Bay':          ['Main Hallway', 'Security'],
+    'Security':             ['Main Hallway', 'Docking Bay'],
+    'Ramp B':               ['Main Hallway', 'Bridge'],
+    'Bridge':               ['Ramp B', 'Communications', 'Navigation', 'Bridge Hallway'],
+    'Communications':       ['Bridge'],
+    'Navigation':           ['Bridge'],
+    'Bridge Hallway':       ['Captain\'s Quarters', 'Bridge'],
+    'Captain\'s Quarters':  ['Bridge Hallway']
+}

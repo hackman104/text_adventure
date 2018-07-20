@@ -28,7 +28,7 @@ class Ship(object):
         return self.status
 
 class Room(object):
-    def __init__(self, name, description, items, borders):
+    def __init__(self, name, description, level, items, borders):
         """
         name is the name of the room
         description a string describing the room if the user enters 'look'
@@ -38,6 +38,7 @@ class Room(object):
         self.name = name
         self.description = description
         self.items = items
+        self.level = level
         self.borders = borders
 
     def get_name(self):
@@ -120,11 +121,13 @@ class Item(object):
         return self.description
 
 class Robot(object):
-    def __init__(self, position, inventory):
+    def __init__(self, ship, position, inventory):
         """
+        ship is the robot's current ship
         position is a room in the ship
         inventory is a list of items
         """
+        self.ship = ship
         self.position = position
         self.inventory = []
 
@@ -163,3 +166,13 @@ class Robot(object):
             self.position = new_room
         else:
             print("You can't travel there from here.")
+
+    def __str__(self):
+        return f"You are in the {self.position.name} on level {self.position.level}."
+
+    def look(self, item=None):
+        if item:
+            print(item)
+        else:
+            print(self.__str__())
+            print(self.position.description)
