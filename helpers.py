@@ -1,24 +1,39 @@
 # Need to figure out how to track which rooms border others
+# Hypersleep pods sealed until ship systems back online - robot not programmed to deactivate time lock
+# Figure out how to have one item inside of another
+
 room_info = {
     'Engineering':          [['Engine Room', 'Systems Hallway'], "This is the engineering room, where the Engineering Officer works.", 0, ["Desk", "Lamp"]],
     'Engine Room':          [['Engineering', 'Systems Hallway', 'Life Support'], "This is the engine room. The internally accessible parts of the drive array are here.", 0, ["Lever", "Partially Open Panel", "Plasma Cutter"]],
-    'Life Support':         ['Engine Room', 'Systems Hallway'],  "The life support systems are managed and maintained in this room.", 0, ["Computer", "Clipboard", "Breaker"]
-    'Systems Hallway':      ['Engine Room', 'Engineering', 'Life Support', 'Ramp A'],
-    'Ramp A':               ['Systems Hallway', 'Main Hallway'],
-    'Main Hallway':         ['Lavatory', 'Crew Quarters', 'Hypersleep Pods', 'Mess Hall', 'Medical Bay', 'Docking Bay', 'Security'],
-    'Lavatory':             ['Main Hallway', 'Hypersleep Pods'],
-    'Hypersleep Pods':      ['Main Hallway', 'Lavatory', 'Crew Quarters'],
-    'Crew Quarters':        ['Hypersleep Pods', 'Main Hallway'],
-    'Mess Hall':            ['Main Hallway'],
-    'Medical Bay':          ['Main Hallway'],
-    'Docking Bay':          ['Main Hallway', 'Security'],
-    'Security':             ['Main Hallway', 'Docking Bay'],
-    'Ramp B':               ['Main Hallway', 'Bridge'],
+    'Life Support':         [['Engine Room', 'Systems Hallway'],  "The life support systems are managed and maintained in this room.", 0, ["Computer", "Clipboard", "Breaker"]],
+    'Systems Hallway':      [['Engine Room', 'Engineering', 'Life Support', 'Ramp A'], "I am in the systems hallway. This connects the rooms on the lowest level of the ship.", 0, ["Doorways"]],
+    'Ramp A':               [['Systems Hallway', 'Main Hallway'], "This is the ramp that connects the lowest level and the main level of the ship.", 1, ["Screwdriver"]],
+    'Main Hallway':         [['Lavatory', 'Crew Quarters', 'Hypersleep Pods', 'Mess Hall', 'Medical Bay', 'Docking Bay', 'Security'], "This is the main hallway, which connects all of the rooms on the main level of the ship.", 1, ["Flashlight"]],
+    'Lavatory':             [['Main Hallway', 'Hypersleep Pods'], "I am in the crew's lavatory. It is surprisingly messy.", 1, ["Toilet Paper", "Soap", "Toilet"]],
+    'Hypersleep Pods':      [['Main Hallway', 'Lavatory', 'Crew Quarters'], "The hypersleep pods are in this room. The crew are all in their pods. The readouts all display warnings.", 1, ["Computer", "Hypersleep pods", "Portable Data Drive"]],
+    'Crew Quarters':        [['Hypersleep Pods', 'Main Hallway'], "These are the crew quarters. There are several bunks and some foot lockers.", 1, ["Foot locker", "Multitool"]],
+    'Mess Hall':            [['Main Hallway'], "I am in the mess hall. There are two tables and several chairs, with a small kitchen and pantry in the back.", 1, ["Pantry", "Cabinet", "Scissors", "Knife"]],
+    'Medical Bay':          [['Main Hallway'], "This is the medical bay, where the ship medical officer treats illnesses and injuries.", 1, ["Table", "Bed", "Hypodermic Needle", "Notepad", "Computer"]],
+    'Docking Bay':          [['Main Hallway', 'Security'], "This is the docking bay. It is currently locked down.", 1, ["Computer", "Bay Door", "Data Cable"]],
+    'Security':             [['Main Hallway', 'Docking Bay'], "This is the security office. It monitors the ship and the docking bay.", 1, ["Computer", "Shock Bolt Gun", "Tazer", "Cabinet"]],
+    'Ramp B':               [['Main Hallway', 'Bridge'], "This is the ramp that connects the main and upper levels of the ship.", 1, []],
     'Bridge':               ['Ramp B', 'Communications', 'Navigation', 'Bridge Hallway'],
     'Communications':       ['Bridge'],
     'Navigation':           ['Bridge'],
     'Bridge Hallway':       ['Captain\'s Quarters', 'Bridge'],
     'Captain\'s Quarters':  ['Bridge Hallway']
+}
+
+item_info = {
+
+}
+
+item_usability = {
+    "lookable":     ["look"],
+    "usable":       ["look", "use"],
+    "takeable":     ["look", "take"],
+    "openable":     ["look", "open"],
+    "combinable":   ["look", "take", "combine"],
 }
 
 class Ship(object):
@@ -84,6 +99,14 @@ class Room(object):
         Returns a list of the room's items
         """
         return self.items
+
+    def display_items(self):
+        if len(self.items) == 0:
+            print("There are no items in this room.")
+        elif len(self.items) == 2:
+            print(f"Items in this room: {self.items[0]} and {self.items[1]}")
+        else:
+            print("Items in this room:", ", ".join(self.items))
 
     def take_item(self, item):
         """
