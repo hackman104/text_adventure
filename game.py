@@ -1,7 +1,7 @@
 import time
 import sys
 import random
-from helpers import Ship, Room, Item
+from helpers import Ship, Room, Item, Robot
 from support import room_connections
 from colorama import init, Back, Style, deinit
 
@@ -18,6 +18,7 @@ def main():
     # start session, initialize ship
     playing = True
     atalanta = Ship(intro_status, list(room_connections.keys()))
+    radmar = Robot(atalanta, )
 
     # check if user has played before, see if they want to skip the intro
     skip_intro = check_if_played()
@@ -153,9 +154,13 @@ def try_command(command):
                 print('Please provide a valid yes or no response.')
         if ans == 'y' or ans == 'yes':
             status = False
+    elif command[0] == "go":
+        move()
     
     return status
         
+def move(robot, command):
+
 
 if __name__ == "__main__":
     main()

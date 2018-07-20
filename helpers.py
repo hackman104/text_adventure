@@ -1,4 +1,25 @@
 # Need to figure out how to track which rooms border others
+room_info = {
+    'Engineering':          [['Engine Room', 'Systems Hallway'], "This is the engineering room, where the Engineering Officer works.", 0, ["Desk", "Lamp"]],
+    'Engine Room':          [['Engineering', 'Systems Hallway', 'Life Support'], "This is the engine room. The internally accessible parts of the drive array are here.", 0, ["Lever", "Partially Open Panel", "Plasma Cutter"]],
+    'Life Support':         ['Engine Room', 'Systems Hallway'],  "The life support systems are managed and maintained in this room.", 0, ["Computer", "Clipboard", "Breaker"]
+    'Systems Hallway':      ['Engine Room', 'Engineering', 'Life Support', 'Ramp A'],
+    'Ramp A':               ['Systems Hallway', 'Main Hallway'],
+    'Main Hallway':         ['Lavatory', 'Crew Quarters', 'Hypersleep Pods', 'Mess Hall', 'Medical Bay', 'Docking Bay', 'Security'],
+    'Lavatory':             ['Main Hallway', 'Hypersleep Pods'],
+    'Hypersleep Pods':      ['Main Hallway', 'Lavatory', 'Crew Quarters'],
+    'Crew Quarters':        ['Hypersleep Pods', 'Main Hallway'],
+    'Mess Hall':            ['Main Hallway'],
+    'Medical Bay':          ['Main Hallway'],
+    'Docking Bay':          ['Main Hallway', 'Security'],
+    'Security':             ['Main Hallway', 'Docking Bay'],
+    'Ramp B':               ['Main Hallway', 'Bridge'],
+    'Bridge':               ['Ramp B', 'Communications', 'Navigation', 'Bridge Hallway'],
+    'Communications':       ['Bridge'],
+    'Navigation':           ['Bridge'],
+    'Bridge Hallway':       ['Captain\'s Quarters', 'Bridge'],
+    'Captain\'s Quarters':  ['Bridge Hallway']
+}
 
 class Ship(object):
     def __init__(self, status, rooms):
@@ -7,7 +28,9 @@ class Ship(object):
         rooms is a list of rooms in the ship
         """
         self.status = status
-        self.rooms = rooms
+        self.rooms = []
+        for room in rooms:
+            self.rooms.append(Room(room, room_info[room][1], room_info[room][2], room_info[room][3], room_info[room][0]))
 
     def get_status(self):
         """
@@ -23,15 +46,18 @@ class Ship(object):
         """
         if system in self.status.keys():
             self.status[system] = new_status
+        else:
+            print("Error: Specified System not Found.")
 
     def __str__(self):
-        return self.status
+        return str(self.status)
 
 class Room(object):
     def __init__(self, name, description, level, items, borders):
         """
         name is the name of the room
         description a string describing the room if the user enters 'look'
+        level is an int representing the floor of the room
         items a list of items available for interaction in the room
         borders is a list of rooms which border the current room
         """
