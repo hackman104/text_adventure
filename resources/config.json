@@ -19,7 +19,7 @@
             "connections": ["Engine Room", "Systems Hallway"],
             "description": "The life support systems are managed and maintained in this room.",
             "level": {"number": 0, "name": "Engineering Deck"},
-            "items": ["Computer", "Clipboard", "Breaker"]
+            "items": ["Computer", "Clipboard", "Notes", "Breaker"]
         },
         {
             "name": "Systems Hallway",
@@ -132,6 +132,155 @@
             "description": "I am in the captain's quarters. The captain's office and bed are here.",
             "level": {"number": 2, "name": "Command Deck"},
             "items": ["Desk", "Armoire", "Bed", "Cabinet", "Access card", "Log book", "Key"]
+        }
+    ],
+    "items": [
+        {
+            "name": "Desk",
+            "description": "There is nothing remarkable about the desk.",
+            "interactions": ["look"],
+            "contains": []
+        },
+        {
+            "name": "Lamp",
+            "description":"It is a lamp meant to light the room.",
+            "interactions": ["look"],
+            "contains": []
+        },
+        {
+            "name": "Lever",
+            "description": "There is a lever inside the panel.",
+            "interactions": ["look", "use"],
+            "contains": []
+        },
+        {
+            "name": "Partially open panel",
+            "description": "There is an electrical panel on the wall. The door is partially open.",
+            "interactions": ["look", "open", "close"],
+            "contains": ["Lever"]
+        },
+        {
+            "name": "Plasma Cutter",
+            "description": "It is a plasma cutter, meant for cutting through metal. It can also be used for welding.",
+            "interactions": ["look", "take", "use"],
+            "contains": []
+        },
+        {
+            "name": "Computer",
+            "description": "This is the computer used to manage life support systems.",
+            "interactions": ["look", "use"],
+            "contains": []
+        },
+        {
+            "name": "Clipboard",
+            "description": "This is a clipboard with notes about the life support systems.",
+            "interactions": ["look", "take"],
+            "contains": ["Notes"]
+        },
+        {
+            "name": "Notes",
+            "description": "The notes record maintenance on the life support systems. The last entry says:\n'Life support systems failing. Suspect sabotage. Returning crew to hypersleep pods to conserve oxygen.'",
+            "interactions": ["look", "take"],
+            "contains": []
+        },
+        {
+            "name": "Breaker",
+            "description": "There is a circuit breaker on the wall. It appears to be damaged.",
+            "interactions": ["look"],
+            "contains": []
+        },
+        {
+            "name": "Doorways",
+            "description": "There are several doorways here.",
+            "interactions": ["look"],
+            "contains": []
+        },
+        {
+            "name": "Screwdriver",
+            "description": "It is a #2 blade screwdriver.",
+            "interactions": ["look", "take", "use"],
+            "contains": []
+        },
+        {
+            "name": "Flashlight",
+            "description": "It is a high intensity discharge flashlight.",
+            "interactions": ["look", "take", "use"],
+            "contains": []
+        },
+        {
+            "name": "Toilet paper",
+            "description": "Standard issue two-ply toilet paper.",
+            "interactions": ["look", "take"],
+            "contains": []
+        },
+        {
+            "name": "Soap",
+            "description": "It is soap. The crew rub it on themselves.",
+            "interactions": ["look"],
+            "contains": []
+        },
+        {
+            "name": "Toilet",
+            "description": "It is a toilet. I do not know what it is for.",
+            "interactions": ["look", "flush"],
+            "contains": []
+        },
+        {
+            "name": "Computer",
+            "description": "This computer is used to manage the hypersleep pods.",
+            "interactions": ["look", "use"],
+            "contains": []
+        },
+        {
+            "name": "Hypersleep pods",
+            "description": "These are the crew's hypersleep pods, designed to keep them safe during long trips. The pods appear to be dangerously low on power.",
+            "interactions": ["look"],
+            "contains": []
+        },
+        {
+            "name": "Portable data drive",
+            "description": "It is a portable data drive. It must be connected to a computer with a data cable to be used.",
+            "interactions": ["look", "take", "use", "combine"],
+            "contains": []
+        },
+        {
+            "name": "Foot locker",
+            "description": "This is the foot locker assigned to the engineering officer. It appears to be unlocked.",
+            "interactions": ["look", "open", "close"],
+            "contains": ["Multitool"]
+        },
+        {
+            "name": "Multitool",
+            "description": "This is a multitool. It contains a small blade, a bottle opener, and a #1 phillips-head screw driver.",
+            "interactions": ["look", "take", "use"],
+            "contains": []
+        },
+        {
+            "name": "Pantry",
+            "description": "This is the main ship's pantry. It is used to store freeze-dried food.",
+            "interactions": ["look", "open", "close"],
+            "contains": ["Scissors"]
+        },
+        {
+            "name": "Scissors",
+            "description": "They are standard kitchen shears.",
+            "interactions": ["look", "take", "use"],
+            "contains": []
+        },
+        {
+            "name": "Cabinet",
+            "description": "It is a cabinet used to store kitchenware.",
+            "interactions": ["look", "open", "close"],
+            "contains": ["Knife"]
+        },
+        {
+            "name": "Knife",
+            "description": "It is a large kitchen knife, used for cutting.",
+            "interactions": ["look", "take", "use"],
+            "contains": []
+        },
+        {
+            
         }
     ]
 }]
