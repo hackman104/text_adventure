@@ -1,0 +1,137 @@
+[{
+    "rooms": [
+        {
+            "name": "Engineering",
+            "connections": ["Engine Room", "Systems Hallway"],
+            "description": "This is the engineering room, where the Engineering Officer works.",
+            "level": {"number": 0, "name": "Engineering Deck"},
+            "items": ["Desk", "Lamp"]
+        },
+        {
+            "name": "Engine Room",
+            "connections": ["Engineering", "Systems Hallway", "Life Support"],
+            "description": "This is the engine room. The internally accessible parts of the drive array are here.",
+            "level": {"number": 0, "name": "Engineering Deck"},
+            "items": ["Lever", "Partially Open Panel", "Plasma Cutter"]
+        },
+        {
+            "name": "Life Support",
+            "connections": ["Engine Room", "Systems Hallway"],
+            "description": "The life support systems are managed and maintained in this room.",
+            "level": {"number": 0, "name": "Engineering Deck"},
+            "items": ["Computer", "Clipboard", "Breaker"]
+        },
+        {
+            "name": "Systems Hallway",
+            "connections": ["Engine Room", "Engineering", "Life Support", "Ramp A"],
+            "description": "I am in the systems hallway. This connects the rooms on the Engineering Deck.",
+            "level": {"number": 0, "name": "Engineering Deck"},
+            "items": ["Doorways"]
+        },
+        {
+            "name": "Ramp A",
+            "connections": ["Systems Hallway", "Main Hallway"],
+            "description": "This is hte ramp that connects the Engineering Deck with the Crew Deck.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Screwdriver"]
+        },
+        {
+            "name": "Main Hallway",
+            "connections": ["Lavatory", "Crew Quarters", "Hypersleep Pods", "Mess Hall", "medical Bay", "Docking Bay", "Security"],
+            "description": "This is the main hallway, which connects all of the rooms on the Crew Deck.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Flashlight"]
+        },
+        {
+            "name": "Lavatory",
+            "connections": ["Main Hallway", "Hypersleep Pods"],
+            "description": "I am in the crew's lavatory. It is surprisingly messy.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Toilet Paper", "Soap", "Toilet"]
+        },
+        {
+            "name": "Hypersleep Pods",
+            "connections": ["Main Hallway", "Lavatory", "Crew Quarters"],
+            "description": "The hypersleep pods are in this room. The crew are all in their pods. The readouts all display warnings.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Computer", "Hypersleep pods", "Portable data drive"]
+        },
+        {
+            "name": "Crew Quarters",
+            "connections": ["Hypersleep Pods", "Main Hallway"],
+            "description": "These are the crew quarters. There are several bunks and some foot lockers.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Foot locker", "Multitool"]
+        },
+        {
+            "name": "Mess Hall",
+            "connections": ["Main Hallway"],
+            "description": "I am in the mess hall. There are two tables and several chairs, with a small kitchen and pantry in the back.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Pantry", "Cabinet", "Scissors", "Knife"]
+        },
+        {
+            "name": "Medical Bay",
+            "connections": ["Main Hallway"],
+            "description": "This is the medical bay, where the medical officer treats illnesses and injuries.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Table", "Bed", "Hypodermic Needle", "Notepad", "Computer"]
+        },
+        {
+            "name": "Docking Bay",
+            "connections": ["Main Hallway", "Security"],
+            "description": "This is the docking bay. It is currently locked down.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Computer", "Bay Door", "Data Cable"]
+        },
+        {
+            "name": "Security",
+            "connections": ["Main Hallway", "Docking Bay"],
+            "description": "This is the security office. The security officer monitors the ship and docking bay here.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": ["Computer", "Shock Bolt Gun", "Tazer", "Cabinet"]
+        },
+        {
+            "name": "Ramp B",
+            "connections": ["Main Hallway", "Bridge"],
+            "description": "This is the ramp that connects the Crew Deck and the Command Deck.",
+            "level": {"number": 1, "name": "Crew Deck"},
+            "items": []
+        },
+        {
+            "name": "Bridge",
+            "connections": ["Ramp B", "Communications", "Navigation", "Bridge Hallway"],
+            "description": "This is the bridge, the command center of the ship.",
+            "level": {"number": 2, "name": "Command Deck"},
+            "items": ["Captain's chair", "Command console", "Key fob", "Ship manual"]
+        },
+        {
+            "name": "Communications",
+            "connections": ["Bridge"],
+            "description": "This the communications room. The equipment is intact but non-functional.",
+            "level": {"number": 2, "name": "Command Deck"},
+            "items": ["Computer", "Comm console", "Code book"]
+        },
+        {
+            "name": "Navigation",
+            "connections": ["Bridge"],
+            "description": "This is the navigation officer's office. The current course is set for Proxima Centauri b.",
+            "level": {"number": 2, "name": "Command Deck"},
+            "items": ["File cabinet", "Clipboard", "Computer", "Desk"]
+        },
+        {
+            "name": "Bridge Hallway",
+            "connections": ["Bridge"],
+            "description": "This is the bridge hallway. It leads from the bridge to the captain's quarters.",
+            "level": {"number": 2, "name": "Command Deck"},
+            "items": ["Captain's door"]
+        },
+        {
+            "name": "Captain's Quarters",
+            "connections": ["Bridge Hallway"],
+            "description": "I am in the captain's quarters. The captain's office and bed are here.",
+            "level": {"number": 2, "name": "Command Deck"},
+            "items": ["Desk", "Armoire", "Bed", "Cabinet", "Access card", "Log book", "Key"]
+        }
+    ]
+}]

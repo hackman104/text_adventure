@@ -17,11 +17,11 @@ room_info = {
     'Docking Bay':          [['Main Hallway', 'Security'], "This is the docking bay. It is currently locked down.", 1, ["Computer", "Bay Door", "Data Cable"]],
     'Security':             [['Main Hallway', 'Docking Bay'], "This is the security office. It monitors the ship and the docking bay.", 1, ["Computer", "Shock Bolt Gun", "Tazer", "Cabinet"]],
     'Ramp B':               [['Main Hallway', 'Bridge'], "This is the ramp that connects the main and upper levels of the ship.", 1, []],
-    'Bridge':               ['Ramp B', 'Communications', 'Navigation', 'Bridge Hallway'],
-    'Communications':       ['Bridge'],
-    'Navigation':           ['Bridge'],
-    'Bridge Hallway':       ['Captain\'s Quarters', 'Bridge'],
-    'Captain\'s Quarters':  ['Bridge Hallway']
+    'Bridge':               [['Ramp B', 'Communications', 'Navigation', 'Bridge Hallway'], "This is the bridge, the command center of the ship.", 2, []],
+    'Communications':       [['Bridge'], "", 2, []],
+    'Navigation':           [['Bridge'], "", 2, []],
+    'Bridge Hallway':       [['Captain\'s Quarters', 'Bridge'], "", 2, []],
+    'Captain\'s Quarters':  [['Bridge Hallway'], "", 2, []]
 }
 
 item_info = {
