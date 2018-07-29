@@ -1,6 +1,7 @@
 import time
 import sys
 import random
+import json
 from helpers import Ship, Room, Item, Robot
 from support import room_connections
 from colorama import init, Back, Style, deinit
@@ -15,10 +16,21 @@ def main():
     # initialize color printing
     init()
 
+    # get ship info
+    try:
+        with open('./resources/config.json') as config_file:
+            world_info = json.load(config_file)
+    except FileNotFoundError:
+        print("Could not find configuration file, exiting program")
+        exit(1)
+    except:
+        print("Unknown error reading config file, exiting program.")
+        exit(1)
+
     # start session, initialize ship
     playing = True
     atalanta = Ship(intro_status, list(room_connections.keys()))
-    radmar = Robot(atalanta, )
+    radmar = Robot(atalanta, "Engineering", [])
 
     # check if user has played before, see if they want to skip the intro
     skip_intro = check_if_played()
