@@ -29,7 +29,7 @@ def main():
 
     # start session, initialize ship
     playing = True
-    atalanta = Ship(intro_status, list(room_connections.keys()))
+    atalanta = Ship(intro_status, world_info["rooms"])
     radmar = Robot(atalanta, "Engineering", [])
 
     # check if user has played before, see if they want to skip the intro
@@ -167,12 +167,15 @@ def try_command(command):
         if ans == 'y' or ans == 'yes':
             status = False
     elif command[0] == "go":
-        move()
+        if len(command) == 1:
+            print("Error, you must tell me where to move. Proper syntax is 'go room_name'")
+        else:
+            move(radmar, command[1])
     
     return status
         
 def move(robot, command):
-
+    pass
 
 if __name__ == "__main__":
     main()

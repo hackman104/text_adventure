@@ -1,6 +1,15 @@
 # Need to figure out how to track which rooms border others
 # Hypersleep pods sealed until ship systems back online - robot not programmed to deactivate time lock
 # Figure out how to have one item inside of another
+import json
+
+try:
+    with open('./resources/config.json') as config_file:
+        world_info = json.load(config_file)
+except FileNotFoundError:
+    print("Cannot open config file.")
+except:
+    print("Unknown error loading configuration information.")
 
 room_info = {
     'Engineering':          [['Engine Room', 'Systems Hallway'], "This is the engineering room, where the Engineering Officer works.", 0, ["Desk", "Lamp"]],
@@ -37,15 +46,15 @@ item_usability = {
 }
 
 class Ship(object):
-    def __init__(self, status, rooms):
+    def __init__(self, status, rooms=world_info["rooms"]):
         """
         status is a dictionary representing the status of key systems
-        rooms is a list of rooms in the ship
+        rooms is a list of rooms in the ship (each room is a dictionary describing the room)
         """
         self.status = status
         self.rooms = []
         for room in rooms:
-            self.rooms.append(Room(room, room_info[room][1], room_info[room][2], room_info[room][3], room_info[room][0]))
+            self.rooms.append(Room(room["name"], room["description"], room["level"], room["items"], room["connections"]))
 
     def get_status(self):
         """
@@ -68,19 +77,25 @@ class Ship(object):
         return str(self.status)
 
 class Room(object):
-    def __init__(self, name, description, level, items, borders):
+    def __init__(self, name, description, level, items, connections):
         """
         name is the name of the room
         description a string describing the room if the user enters 'look'
         level is an int representing the floor of the room
         items a list of items available for interaction in the room
-        borders is a list of rooms which border the current room
+        connections is a list of rooms which are accessible from the current room
         """
         self.name = name
         self.description = description
-        self.items = items
+        self.items = []
         self.level = level
-        self.borders = borders
+        self.connections = connections
+        for item in items:
+            for curr_item in world_info["items"]:
+                if curr_item["id"] == item:
+                    item_info = curr_item
+                    break
+            self.items.append(Item(item_info["id"], item_info["name"], item_info["description"], item_info["interactions"], item_info["contains"]))
 
     def get_name(self):
         """
@@ -124,25 +139,29 @@ class Room(object):
     def __str__(self):
         return self.description
     
-    def check_border(self, room):
+    def check_connection(self, room):
         """
         returns True if the rooms border one another, False if otherwise
         """
-        if room in self.borders:
+        if room in self.connections:
             return True
         else:
             return False
 
 class Item(object):
-    def __init__(self, name, description, interactions):
+    def __init__(self, id, name, description, interactions, contains):
         """
+        id is a unique int representing the item
         name is a string with the name of the item
         description is a detailed description of the object, to be used if the user looks at it.
         interactions is a list of valid commands for the object.
+        contains is a list of items the current item contains
         """
+        self.id = id
         self.name = name
         self.description = description
         self.interactions = interactions
+        self.contains = contains
 
     def get_name(self):
         """
@@ -211,7 +230,7 @@ class Robot(object):
         """
         moves robot to a new room
         """
-        if self.position.check_border(new_room):
+        if self.position.check_connection(new_room):
             self.position = new_room
         else:
             print("You can't travel there from here.")
