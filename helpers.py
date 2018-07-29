@@ -14,7 +14,7 @@ room_info = {
     'Crew Quarters':        [['Hypersleep Pods', 'Main Hallway'], "These are the crew quarters. There are several bunks and some foot lockers.", 1, ["Foot locker", "Multitool"]],
     'Mess Hall':            [['Main Hallway'], "I am in the mess hall. There are two tables and several chairs, with a small kitchen and pantry in the back.", 1, ["Pantry", "Cabinet", "Scissors", "Knife"]],
     'Medical Bay':          [['Main Hallway'], "This is the medical bay, where the ship medical officer treats illnesses and injuries.", 1, ["Table", "Bed", "Hypodermic Needle", "Notepad", "Computer"]],
-    'Docking Bay':          [['Main Hallway', 'Security'], "This is the docking bay. It is currently locked down.", 1, ["Computer", "Bay Door", "Data Cable"]],
+    'Docking Bay':          [['Main Hallway', 'Security'], "This is the docking bay. It is currently locked down.", 1, ["Computer", "Bay Door", "Bay Door Control", "Data Cable"]],
     'Security':             [['Main Hallway', 'Docking Bay'], "This is the security office. It monitors the ship and the docking bay.", 1, ["Computer", "Shock Bolt Gun", "Tazer", "Cabinet"]],
     'Ramp B':               [['Main Hallway', 'Bridge'], "This is the ramp that connects the main and upper levels of the ship.", 1, []],
     'Bridge':               [['Ramp B', 'Communications', 'Navigation', 'Bridge Hallway'], "This is the bridge, the command center of the ship.", 2, []],
