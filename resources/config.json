@@ -136,348 +136,406 @@
     ],
     "items": [
         {
+            "id": 1,
             "name": "Desk",
             "description": "There is nothing remarkable about the desk.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 2,
             "name": "Lamp",
             "description":"It is a lamp meant to light the room.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 3,
             "name": "Lever",
             "description": "There is a lever inside the panel.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 4,
             "name": "Partially open panel",
             "description": "There is an electrical panel on the wall. The door is partially open.",
             "interactions": ["look", "open", "close"],
             "contains": ["Lever"]
         },
         {
+            "id": 5,
             "name": "Plasma Cutter",
             "description": "It is a plasma cutter, meant for cutting through metal. It can also be used for welding.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 6,
             "name": "Computer",
             "description": "This is the computer used to manage life support systems.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 7,
             "name": "Clipboard",
             "description": "This is a clipboard with notes about the life support systems.",
             "interactions": ["look", "take"],
             "contains": ["Notes"]
         },
         {
+            "id": 8,
             "name": "Notes",
             "description": "The notes record maintenance on the life support systems. The last entry says:\n'Life support systems failing. Suspect sabotage. Returning crew to hypersleep pods to conserve oxygen.'",
             "interactions": ["look", "take"],
             "contains": []
         },
         {
+            "id": 9,
             "name": "Breaker",
             "description": "There is a circuit breaker on the wall. It appears to be damaged.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 10,
             "name": "Doorways",
             "description": "There are several doorways here.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 11,
             "name": "Screwdriver",
             "description": "It is a #2 blade screwdriver.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 12,
             "name": "Flashlight",
             "description": "It is a high intensity discharge flashlight.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 13,
             "name": "Toilet paper",
             "description": "Standard issue two-ply toilet paper.",
             "interactions": ["look", "take"],
             "contains": []
         },
         {
+            "id": 14,
             "name": "Soap",
             "description": "It is soap. The crew rub it on themselves.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 15,
             "name": "Toilet",
             "description": "It is a toilet. I do not know what it is for.",
             "interactions": ["look", "flush"],
             "contains": []
         },
         {
+            "id": 16,
             "name": "Computer",
             "description": "This computer is used to manage the hypersleep pods.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 17,
             "name": "Hypersleep pods",
             "description": "These are the crew's hypersleep pods, designed to keep them safe during long trips. The pods appear to be dangerously low on power.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 18,
             "name": "Portable data drive",
             "description": "It is a portable data drive. It must be connected to a computer with a data cable to be used.",
             "interactions": ["look", "take", "use", "combine"],
             "contains": []
         },
         {
+            "id": 19,
             "name": "Foot locker",
             "description": "This is the foot locker assigned to the engineering officer. It appears to be unlocked.",
             "interactions": ["look", "open", "close"],
             "contains": ["Multitool"]
         },
         {
+            "id": 20,
             "name": "Multitool",
             "description": "This is a multitool. It contains a small blade, a bottle opener, and a #1 phillips-head screw driver.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 21,
             "name": "Pantry",
             "description": "This is the main ship's pantry. It is used to store freeze-dried food.",
             "interactions": ["look", "open", "close"],
             "contains": ["Scissors"]
         },
         {
+            "id": 22,
             "name": "Scissors",
             "description": "They are standard kitchen shears.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 23,
             "name": "Cabinet",
             "description": "It is a cabinet used to store kitchenware.",
             "interactions": ["look", "open", "close"],
             "contains": ["Knife"]
         },
         {
+            "id": 24,
             "name": "Knife",
             "description": "It is a large kitchen knife, used for cutting.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 25,
             "name": "Table",
             "description": "There is an empty surgical table in the room.",
             "interactions": ["look"],
             "contains": ["Hypodermic needle"]
         },
         {
+            "id": 26,
             "name": "Bed",
             "description": "It is a bed for patients.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 27,
             "name": "Hypodermic needle",
             "description": "This is a large hypodermic needle. It is full, and the label reads 'experimental'.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 28,
             "name": "Clipboard",
             "description": "This is the medical officer's clipboard. It contains notes on various patients.",
             "interactions": ["look"],
             "contains": ["Doctor's notes"]
         },
         {
+            "id": 29,
             "name": "Doctor's notes",
             "description": "These are the medical officer's notes. All crew members have recent exams. They end: 'Final entry:\nAll crew members infected by unknown pathogen. Untested cure developed, but must be administered to all crew members through automatic intravenous system.'",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 30,
             "name": "Computer",
             "description": "This is the medical officer's computer.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 31,
             "name": "Computer",
             "description": "This is the docking bay computer. It is displaying a list of error messages and appears unusable.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 32,
             "name": "Bay Door",
             "description": "This is the inner docking bay door. It is currently sealed.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 33,
             "name": "Bay Door Control",
             "description": "It is the bay door control panel. It requires an access card to activate.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 34,
             "name": "Data Cable",
             "description": "It is a standard-issue data cable for connectiong data drives to computers.",
             "interactions": ["look", "take", "use", "combine"],
             "contains": []
         },
         {
+            "id": 35,
             "name": "Computer",
             "description": "This is the security officer's computer. It contains the security officer's notes. It requires a key fob to access.",
             "interactions": ["look", "use"],
             "contains": ["Security officer's notes"]
         },
         {
+            "id": 36,
             "name": "Security officer's notes",
             "description": "The security officer's notes are sparse. He states that all of the ship's systems appears to have been thoroughly compromised, and will need to be repaired. The failing life support systems mean that the crew had to return to their hypersleep pods, and must hope for a miracle.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 37,
             "name": "Shock Bolt Gun",
             "description": "This is a gun designed to stun. It fires a highly charged electrical bolt.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 38,
             "name": "Cabinet",
             "description": "There is a cabinet on the wall behind the computer",
             "interactions": ["look", "open", "close"],
             "contains": ["Shock Bolt Gun"]
         },
         {
+            "id": 39,
             "name": "Captain's chair",
             "description": "This is the captain's chair. It has hardly been used.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 40,
             "name": "Command console",
             "description": "This is the command console. Most of the ship's systems can be managed from here.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 41,
             "name": "Key fob",
             "description": "This is the security officer's key fob.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 42,
             "name": "Ship manual",
             "description": "This is the emergency hard copy of the ship's manual, to be used only if other systems have failed.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 43,
             "name": "Computer",
             "description": "This is the computer used by the ship's communications officer. It appears to be offline.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 44,
             "name": "Comm console",
             "description": "The ship's communications console. Messages are sent and received here using coded channels.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 45,
             "name": "Code book",
             "description": "This contains the coded channels for contacting different ships and organizations. There appears to be a hand-written note.",
             "interactions": ["look"],
             "contains": ["Note"]
         },
         {
+            "id": 46,
             "name": "Note",
             "description": "The note simply says: 'Comms encrypted by outside party. Must find code to restore.",
             "interactions": ["look", "take"],
             "contains": []
         },
         {
+            "id": 47,
             "name": "File cabinet",
             "description": "This is the file cabinet for the navigation officer.",
             "interactions": ["look", "open", "close"],
             "contains": ["Clipboard"]
         },
         {
+            "id": 48,
             "name": "Clipboard",
             "description": "It is an unused clipboard.",
             "interactions": ["look", "take"],
             "contains": []
         },
         {
+            "id": 49,
             "name": "Computer",
             "description": "It is the navigation officer's computer.",
             "interactions": ["look", "use"],
             "contains": []
         },
         {
+            "id": 50,
             "name": "Desk",
             "description": "The navigation officer's desk. Used for advanced calculations to plot interstellar courses.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 51,
             "name": "Captain's door",
             "description": "This is the captain's door. It requires an access key to open.",
             "interactions": ["look", "open", "close"],
             "contains": []
         },
         {
+            "id": 52,
             "name": "Desk",
             "description": "This is the captain's desk. It contains several drawers.",
             "interactions": ["look", "open", "close"],
             "contains": ["Log Book"]
         },
         {
+            "id": 53,
             "name": "Armoire",
             "description": "The armoire where the captain keeps his clothes.",
             "interactions": ["look", "open", "close"],
             "contains": ["Key"]
         },
         {
+            "id": 54,
             "name": "Bed",
             "description": "The captain's bed. It has not been used recently.",
             "interactions": ["look"],
             "contains": []
         },
         {
+            "id": 55,
             "name": "Cabinet",
             "description": "A cabinet used to store things.",
             "interactions": ["look", "open", "close"],
             "contains": ["Access card"]
         },
         {
+            "id": 56,
             "name": "Access card",
             "description": "The captain's spare access card. Can access anything that accepts such a card.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 57,
             "name": "Log book",
             "description": "The captain's log book.",
             "interactions": ["look", "take", "use"],
             "contains": []
         },
         {
+            "id": 58,
             "name": "Key",
             "description": "An old fashioned key. Used to open something.",
             "interactions": ["look", "take", "use"],
