@@ -72,11 +72,28 @@ class Item(object):
         """
         return self.description
 
-    def check_contains(self, item):
-        if item in self.contains:
+    def check_contains(self):
+        """
+        check if the current item contains anything
+        """
+        if self.contains:
+            return True
+
+    def check_contains_item(self, other):
+        """
+        check if the current item contains another item
+        other is item object
+        """
+        if other.id in self.contains:
             return True
         else:
             return False
+
+    def get_interactions(self):
+        """
+        get the interactions an item has
+        """
+        return self.interactions
 
     def check_interaction(self, action):
         """
@@ -87,6 +104,20 @@ class Item(object):
             return True
         else:
             return False
+
+    def set_interactions(self, action, task):
+        """
+        adds or removes an action from the list of available actions
+        action is a string representing the action
+        task is a string, either "add" or "remove"
+        """
+        task = task.lower()
+        if task == 'add':
+            self.interactions.append(action)
+        elif task == 'remove':
+            self.interactions.remove(action)
+        else:
+            print("Invalid task - must be 'add' or 'remove'")
 
     def __str__(self):
         return self.description
