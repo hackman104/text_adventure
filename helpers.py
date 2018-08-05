@@ -45,46 +45,64 @@ item_usability = {
     "combinable":   ["look", "take", "combine"],
 }
 
-class Ship(object):
-    def __init__(self, status, rooms=world_info["rooms"]):
+class Item(object):
+    def __init__(self, id, name, description, interactions, contains):
         """
-        status is a dictionary representing the status of key systems
-        rooms is a list of rooms in the ship (each room is a dictionary describing the room)
+        id is a unique int representing the item
+        name is a string with the name of the item
+        description is a detailed description of the object, to be used if the user looks at it.
+        interactions is a list of valid commands for the object.
+        contains is a list of items the current item contains
         """
-        self.status = status
-        self.rooms = []
-        for room in rooms:
-            self.rooms.append(Room(room["name"], room["description"], room["level"], room["items"], room["connections"]))
+        self.id = id
+        self.name = name
+        self.description = description
+        self.interactions = interactions
+        self.contains = contains
 
-    def get_status(self):
+    def get_name(self):
         """
-        Gets the status of the ship and its core systems
+        returns the name of the item
         """
-        return self.status
+        return self.name
 
-    def set_status(self, system, new_status):
+    def get_description(self):
         """
-        updates the status of a ship system
-        system: a string representing a key in self.status
-        new_status: a string representing the updated status
+        returns a description of the item if the user looks at it
         """
-        if system in self.status.keys():
-            self.status[system] = new_status
+        return self.description
+
+    def check_contains(self, item):
+        if item in self.contains:
+            return True
         else:
-            print("Error: Specified System not Found.")
+            return False
+
+    def check_interaction(self, action):
+        """
+        Checks whether the user command is in the item's list of valid actions.
+        If it is, return true. If not, return False.
+        """
+        if action in self.interactions:
+            return True
+        else:
+            return False
 
     def __str__(self):
-        return str(self.status)
+        return self.description
 
 class Room(object):
-    def __init__(self, name, description, level, items, connections):
+    def __init__(self, id, name, description, level, items, connections):
         """
-        name is the name of the room
+        a room in the ship
+        id is the unique id number of the room (int)
+        name is the name of the room (string)
         description a string describing the room if the user enters 'look'
-        level is an int representing the floor of the room
-        items a list of items available for interaction in the room
-        connections is a list of rooms which are accessible from the current room
+        level is a dict representing the floor of the room (two keys: number (an int) and name (a string))
+        items is a list of items available for interaction in the room (int id numbers)
+        connections is a list of rooms which are accessible from the current room (id numbers)
         """
+        self.id = id
         self.name = name
         self.description = description
         self.items = []
@@ -97,6 +115,12 @@ class Room(object):
                     break
             self.items.append(Item(item_info["id"], item_info["name"], item_info["description"], item_info["interactions"], item_info["contains"]))
 
+    def get_id(self):
+        """
+        Returns the room's id number
+        """
+        return self.id
+    
     def get_name(self):
         """
         Returns the room's name
@@ -109,11 +133,23 @@ class Room(object):
         """
         return self.description
 
+    def get_level(self):
+        """
+        Returns the room's level
+        """
+        return self.level
+
     def get_items(self):
         """
         Returns a list of the room's items
         """
         return self.items
+
+    def get_connections(self):
+        """
+        Returns the rooms accessible from the current room
+        """
+        return self.connections
 
     def display_items(self):
         if len(self.items) == 0:
@@ -148,45 +184,36 @@ class Room(object):
         else:
             return False
 
-class Item(object):
-    def __init__(self, id, name, description, interactions, contains):
+class Ship(object):
+    def __init__(self, status, rooms=world_info["rooms"]):
         """
-        id is a unique int representing the item
-        name is a string with the name of the item
-        description is a detailed description of the object, to be used if the user looks at it.
-        interactions is a list of valid commands for the object.
-        contains is a list of items the current item contains
+        status is a dictionary representing the status of key systems
+        rooms is a list of rooms in the ship (each room is a dictionary describing the room)
         """
-        self.id = id
-        self.name = name
-        self.description = description
-        self.interactions = interactions
-        self.contains = contains
+        self.status = status
+        self.rooms = []
+        for room in rooms:
+            self.rooms.append(Room(room["name"], room["description"], room["level"], room["items"], room["connections"]))
 
-    def get_name(self):
+    def get_status(self):
         """
-        returns the name of the item
+        Gets the status of the ship and its core systems
         """
-        return self.name
+        return self.status
 
-    def get_description(self):
+    def set_status(self, system, new_status):
         """
-        returns a description of the item if the user looks at it
+        updates the status of a ship system
+        system: a string representing a key in self.status
+        new_status: a string representing the updated status
         """
-        return self.description
-
-    def check_interaction(self, action):
-        """
-        Checks whether the user command is in the item's list of valid actions.
-        If it is, return true. If not, return False.
-        """
-        if action in self.interactions:
-            return True
+        if system in self.status.keys():
+            self.status[system] = new_status
         else:
-            return False
+            print("Error: Specified System not Found.")
 
     def __str__(self):
-        return self.description
+        return str(self.status)
 
 class Robot(object):
     def __init__(self, ship, position, inventory):
